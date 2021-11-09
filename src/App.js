@@ -8,6 +8,7 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <TopBar/>
+          <Home/>
         </Route>
         <Route path= "/a" exact>
           <Home/>
