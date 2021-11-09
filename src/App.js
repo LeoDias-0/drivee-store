@@ -10,9 +10,6 @@ function App() {
           <TopBar/>
           <Home/>
         </Route>
-        <Route path= "/a" exact>
-          <Home/>
-        </Route>
       </Switch>
     </BrowserRouter>
   );
