@@ -46,6 +46,11 @@ const Top = styled.div`
     box-sizing: border-box;
     padding: 20px;
     z-index:1;
+
+    & h1{
+        font-size: 32px;
+        font-weight: 700;
+    }
     
 
     & div{
@@ -66,7 +71,7 @@ const StyledCart = styled.div`
         position: fixed;
         top: 100px;
         right: -100%;
-        background-color: #FFF159;
+        background-color: #FFFFFF;
         width:33%;
         z-index:1;
         height: 100%;
