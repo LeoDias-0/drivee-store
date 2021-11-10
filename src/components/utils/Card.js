@@ -9,7 +9,7 @@ export default function Card({item}){
             </div>
             <div className="infos">
                 <div>
-                    <h1 onClick={()=> history.push("/item")}>{item.name}</h1> 
+                    <h1 onClick={()=> history.push(`/item/${item.id}`)}>{item.name}</h1> 
                     <span>{item.description}</span>
                     <p>R${item.price}</p>
                 </div>
