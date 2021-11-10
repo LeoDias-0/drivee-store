@@ -3,6 +3,7 @@ import { BsPersonCircle, BsCart2 } from 'react-icons/bs';
 import { useState } from "react";
 import { useHistory } from "react-router";
 
+
 export default function TopBar(){
     const [isOpen, setIsOpen]= useState("")
     const [login, setLogin]= useState(true)
@@ -25,9 +26,13 @@ export default function TopBar(){
                         <BsPersonCircle onClick={()=> history.push("/sign-in")} style={{fontSize: 50, cursor: "pointer"}}/>
                     }
                     {login ? 
-                        <div>
-                            <p>Nome teste</p>
-                        </div>
+                        <>
+                            <div>
+                                <p>Jean F</p>
+                                <span>Sair</span>
+                            </div>
+                            <BsCart2 onClick={openCloseMenu} style={{fontSize: 50, cursor: "pointer"}}/>
+                        </>
                         :
                         <div>
                             <span onClick={()=> history.push("/sign-in")} >Login</span>
@@ -35,7 +40,7 @@ export default function TopBar(){
                         </div>
                         }
                    
-                    <BsCart2 onClick={openCloseMenu} style={{fontSize: 50, cursor: "pointer"}}/>
+                    
                 </div>
             </Top>
             <StyledCart>

@@ -1,8 +1,22 @@
 import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
 import styled from "styled-components"
+import axios from "axios";
+import Card from "../utils/Card";
 
 export default function Home(){
     const history=useHistory();
+    const [items, setItems] = useState([]);
+
+    useEffect(()=>{
+        axios.get("http://localhost:4000/items")
+        .then(res=>{
+            setItems(res.data)
+        })
+        .catch(err=>{
+            console.log("deu ruim")
+        })
+    },[])
 
     
     return (
@@ -11,59 +25,9 @@ export default function Home(){
                 Todos os produtos
             </span>
             <Cards>
-                <div className="card">
-                    <div className="img" onClick={()=> history.push("/item")}>
-                        <img src="https://a-static.mlcdn.com.br/618x463/bolsa-feminina-dhaffy-preto-alca-de-mao-e-transversal-dhaffy-bolsas/dhaffybolsas/5690822015/31df2a78d92da7e167ddcadc561cfd17.jpg" alt=""/>
-                    </div>
-                    <div className="infos">
-                        <div>
-                            <h1 onClick={()=> history.push("/item")}>bolsa</h1> 
-                            <span>Bolsa adoravel</span>
-                            <p>R$50,00</p>
-                        </div>
-                        <button>
-                            Adicionar ao carrinho
-                        </button>
-                        
-                    </div>
-                </div> 
-
-
-                <div className="card">
-                    <div className="img" onClick={()=> history.push("/item")}>
-                        <img src="https://a-static.mlcdn.com.br/618x463/bolsa-feminina-dhaffy-preto-alca-de-mao-e-transversal-dhaffy-bolsas/dhaffybolsas/5690822015/31df2a78d92da7e167ddcadc561cfd17.jpg" alt=""/>
-                    </div>
-                    <div className="infos">
-                        <div>
-                            <h1 onClick={()=> history.push("/item")}>bolsa</h1> 
-                            <span>Bolsa adoravel</span>
-                            <p>R$50,00</p>
-                        </div>
-                        <button>
-                            Adicionar ao carrinho
-                        </button>
-                        
-                    </div>
-                </div> 
-
-
-                <div className="card">
-                    <div className="img" onClick={()=> history.push("/item")}>
-                        <img src="https://a-static.mlcdn.com.br/618x463/bolsa-feminina-dhaffy-preto-alca-de-mao-e-transversal-dhaffy-bolsas/dhaffybolsas/5690822015/31df2a78d92da7e167ddcadc561cfd17.jpg" alt=""/>
-                    </div>
-                    <div className="infos">
-                        <div>
-                            <h1 onClick={()=> history.push("/item")}>bolsa</h1> 
-                            <span>Bolsa adoravel</span>
-                            <p>R$50,00</p>
-                        </div>
-                        <button>
-                            Adicionar ao carrinho
-                        </button>
-                        
-                    </div>
-                </div> 
+                {items.map(item => <Card item={item} key={item.id}/>)}
             </Cards>
+            
         </Container>
         
     )
@@ -91,10 +55,20 @@ const Cards = styled.div`
     & .card{
         width: 30%;
         height: 250px;
-        background-color: #F0FFFF;
+        background-color: #FFFFFF;
         display: flex;
         margin-bottom: 20px;
         border-radius: 20px;
+
+       
+
+        @media screen and (max-width: 1100px){
+            width:48%
+        }
+
+        @media screen and (max-width: 711px){
+            width:80%
+        }
 
     & .img{
         width: 50%;
