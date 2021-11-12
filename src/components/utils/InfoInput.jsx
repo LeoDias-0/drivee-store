@@ -16,10 +16,11 @@ const ContainerInput = styled.input`
     font-weight: 400;
 `
 
-const InfoInput = ({ placeholder, valueToTrack }) => {
+const InfoInput = ({ placeholder, valueToTrack, type }) => {
     const [value, setValue] = valueToTrack
     return (
         <ContainerInput
+            type={type}
             placeholder={placeholder}
             onChange={e => setValue(e.target.value)}
             value={value} />
