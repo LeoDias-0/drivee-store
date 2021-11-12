@@ -68,7 +68,7 @@ const StyledCard = styled.div`
                 cursor: pointer;
             }
             & span{
-                font-size: 22px;
+                font-size: 12px;
                 color: #4F4F4F;
             }
             & p{
