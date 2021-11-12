@@ -1,28 +1,32 @@
-import styled from "styled-components";
-import { useHistory } from "react-router";
-export default function Card({item}){
-    const history= useHistory()
-    return(
-        <StyledCard>
-            <div className="img" onClick={()=> history.push("/item")}>
-                <img src={item.img} alt=""/>
-            </div>
-            <div className="infos">
-                <div>
-                    <h1 onClick={()=> history.push(`/item/${item.id}`)}>{item.name}</h1> 
-                    <span>{item.description}</span>
-                    <p>R${item.price}</p>
-                </div>
-                <button>
-                    Adicionar ao carrinho
-                </button>
-                
-            </div>
-        </StyledCard> 
-    )
+import styled from 'styled-components';
+import { useHistory } from 'react-router';
+
+export default function Card({ item }) {
+  const history = useHistory();
+  return (
+    <StyledCard>
+      <div className="img" onClick={() => history.push('/item')}>
+        <img src={item.img} alt="" />
+      </div>
+      <div className="infos">
+        <div>
+          <h1 onClick={() => history.push(`/item/${item.id}`)}>{item.name}</h1>
+          <span>{item.description}</span>
+          <p>
+            R$
+            {item.price}
+          </p>
+        </div>
+        <button>
+          Adicionar ao carrinho
+        </button>
+
+      </div>
+    </StyledCard>
+  );
 }
 
-const StyledCard= styled.div`
+const StyledCard = styled.div`
         width: 30%;
         height: 250px;
         background-color: #FFFFFF;

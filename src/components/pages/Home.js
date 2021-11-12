@@ -1,36 +1,32 @@
-import { useHistory } from "react-router";
-import { useEffect, useState } from "react";
-import styled from "styled-components"
-import axios from "axios";
-import Card from "../utils/Card";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import Card from '../utils/Card';
 
-export default function Home(){
-    const history=useHistory();
-    const [items, setItems] = useState([]);
+export default function Home() {
+  const [items, setItems] = useState([]);
 
-    useEffect(()=>{
-        axios.get("http://localhost:4000/items")
-        .then(res=>{
-            setItems(res.data)
-        })
-        .catch(err=>{
-            console.log("deu ruim")
-        })
-    },[])
+  useEffect(() => {
+    axios.get('http://localhost:4000/items')
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch(() => {
+        console.log('deu ruim');
+      });
+  }, []);
 
-    
-    return (
-        <Container>
-            <span>
-                Todos os produtos
-            </span>
-            <Cards>
-                {items.map(item => <Card item={item} key={item.id}/>)}
-            </Cards>
-            
-        </Container>
-        
-    )
+  return (
+    <Container>
+      <span>
+        Todos os produtos
+      </span>
+      <Cards>
+        {items.map((item) => <Card item={item} key={item.id} />)}
+      </Cards>
+    </Container>
+
+  );
 }
 
 const Container = styled.div`

@@ -1,55 +1,53 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 import { BsPersonCircle, BsCart2 } from 'react-icons/bs';
-import { useState } from "react";
-import { useHistory } from "react-router";
+import { useState } from 'react';
+import { useHistory } from 'react-router';
 
+export default function TopBar() {
+  const [isOpen, setIsOpen] = useState('');
+  const [login, setLogin] = useState(true);
+  const history = useHistory();
 
-export default function TopBar(){
-    const [isOpen, setIsOpen]= useState("")
-    const [login, setLogin]= useState(true)
-    const history = useHistory();
+  function openCloseMenu() {
+    isOpen ? setIsOpen('') : setIsOpen('open');
+  }
 
-    function openCloseMenu(){
-        isOpen ? setIsOpen(""):setIsOpen("open");
-    }
-
-    return (
-        <>
-            <Top>
+  return (
+    <>
+      <Top>
+        <div>
+          <h1 onClick={() => history.push('/')}>Drivee</h1>
+        </div>
+        <div>
+          {login
+            ? <BsPersonCircle style={{ fontSize: 50 }} />
+            : <BsPersonCircle onClick={() => history.push('/sign-in')} style={{ fontSize: 50, cursor: 'pointer' }} />}
+          {login
+            ? (
+              <>
                 <div>
-                    <h1 onClick={()=> history.push("/")}>Drivee</h1>
+                  <p>Jean F</p>
+                  <span>Sair</span>
                 </div>
-                <div>
-                    {login ?
-                        <BsPersonCircle style={{fontSize: 50}}/>
-                        :
-                        <BsPersonCircle onClick={()=> history.push("/sign-in")} style={{fontSize: 50, cursor: "pointer"}}/>
-                    }
-                    {login ? 
-                        <>
-                            <div>
-                                <p>Jean F</p>
-                                <span>Sair</span>
-                            </div>
-                            <BsCart2 onClick={openCloseMenu} style={{fontSize: 50, cursor: "pointer"}}/>
-                        </>
-                        :
-                        <div>
-                            <span onClick={()=> history.push("/sign-in")} >Login</span>
-                            <span onClick={()=> history.push("/sign-up")} >Cadastre-se</span>
-                        </div>
-                        }
-                   
-                    
-                </div>
-            </Top>
-            <StyledCart>
-                <div className={`cart ${isOpen}`}>
-                    Aqui vai a config do carrinho
-                </div>
-            </StyledCart>
-        </>
-    )
+                <BsCart2 onClick={openCloseMenu} style={{ fontSize: 50, cursor: 'pointer' }} />
+              </>
+            )
+            : (
+              <div>
+                <span onClick={() => history.push('/sign-in')}>Login</span>
+                <span onClick={() => history.push('/sign-up')}>Cadastre-se</span>
+              </div>
+            )}
+
+        </div>
+      </Top>
+      <StyledCart>
+        <div className={`cart ${isOpen}`}>
+          Aqui vai a config do carrinho
+        </div>
+      </StyledCart>
+    </>
+  );
 }
 
 const Top = styled.div`
