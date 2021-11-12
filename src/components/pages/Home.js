@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Card from '../utils/Card';
+import ContainerForm from '../utils/ContainerForm';
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -17,14 +18,17 @@ export default function Home() {
   }, []);
 
   return (
-    <Container>
-      <span>
-        Todos os produtos
-      </span>
-      <Cards>
-        {items.map((item) => <Card item={item} key={item.id} />)}
-      </Cards>
-    </Container>
+    <ContainerForm>
+      <Container>
+        <span>
+          Todos os produtos
+        </span>
+        <Cards>
+          {items.map((item) => <Card item={item} key={item.id} />)}
+        </Cards>
+      </Container>
+    </ContainerForm>
+    
 
   );
 }
@@ -47,70 +51,4 @@ const Cards = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-
-    & .card{
-        width: 30%;
-        height: 250px;
-        background-color: #FFFFFF;
-        display: flex;
-        margin-bottom: 20px;
-        border-radius: 20px;
-
-       
-
-        @media screen and (max-width: 1100px){
-            width:48%
-        }
-
-        @media screen and (max-width: 711px){
-            width:80%
-        }
-
-    & .img{
-        width: 50%;
-        height: 100%;
-        cursor: pointer;
-        & img{
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px 0px 0px 20px;
-        }
-    }
-    & .infos{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        box-sizing: border-box;
-        padding: 20px;
-        align-items: center;
-        width: 50%;
-        & h1{
-            font-size: 32px;
-            font-weight: 600;
-            color:#1C1C1C;
-            cursor: pointer;
-        }
-        & span{
-            font-size: 22px;
-            color: #4F4F4F;
-        }
-        & p{
-            font-size: 28px;
-        }
-        & div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        & button{
-            width: 100%;
-            height: 40px;
-            border: none;
-            border-radius: 10px;
-            background-color: #1E90FF;
-            color: #FFFFFF;
-        }
-    }
-    }
 `;
