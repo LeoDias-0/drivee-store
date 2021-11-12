@@ -17,6 +17,8 @@ const SignUpScreen = () => {
         // TODO: 
         // Algumas validações básicas
 
+        if (password !== repeatedPassword) alert("A senhas devem ser iguais!")
+
         const body = {
             name,
             email,
@@ -25,10 +27,10 @@ const SignUpScreen = () => {
         
         try {
             const response = await postSignUp(body)
-
+            console.log(response)
             if (response.status === 200) alert('Usuário cadastrado com sucesso!')
         } catch (error) {
-
+            console.log('Houve um erro interno, tente novamente mais tarde!')
         }
     }
     
