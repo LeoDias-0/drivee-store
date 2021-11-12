@@ -48,11 +48,9 @@ const SignUpScreen = () => {
                     placeholder={'E-mail'}
                     valueToTrack={[email, setEmail]} />
                 <InfoInput
-                    type={'password'}
                     placeholder={'Senha'}
                     valueToTrack={[password, setPassword]} />
                 <InfoInput
-                    type={'password'}
                     placeholder={'Repita sua senha'}
                     valueToTrack={[repeatedPassword, setRepeatedPassword]} />
                 <SubmitButton innerText={'Cadastrar'} onClick={handleSubmitButton} />
