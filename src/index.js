@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom'
 import App from './components/App'
 
-console.log(proces.env)
+console.log(process.env)
 
 ReactDOM.render(<App />, document.querySelector('.root'))
