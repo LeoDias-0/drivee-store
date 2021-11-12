@@ -12,8 +12,8 @@ export default function Home() {
         console.log(res)
         setItems(res.data);
       })
-      .catch(() => {
-        console.log('deu ruim');
+      .catch((err) => {
+        console.log('err');
       });
   }, []);
 
