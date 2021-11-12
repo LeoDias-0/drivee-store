@@ -7,7 +7,11 @@ const BASE_URL = REACT_APP_BASE_URL ? REACT_APP_BASE_URL : 'http://localhost:404
 const postSignUp = body => {
     return axios.post(`${BASE_URL}/sign-up`, body)
 }
+function getItems(){
+    return axios.get(`${BASE_URL}/items`)
+}
 
 export {
-    postSignUp
+    postSignUp,
+    getItems
 }

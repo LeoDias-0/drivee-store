@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Card from '../utils/Card';
-import ContainerForm from '../utils/ContainerForm';
+import { getItems } from '../../services/API';
 
 export default function Home() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/items')
+      getItems()
       .then((res) => {
+        console.log(res)
         setItems(res.data);
       })
       .catch(() => {
@@ -18,7 +18,6 @@ export default function Home() {
   }, []);
 
   return (
-    <ContainerForm>
       <Container>
         <span>
           Todos os produtos
@@ -27,19 +26,22 @@ export default function Home() {
           {items.map((item) => <Card item={item} key={item.id} />)}
         </Cards>
       </Container>
-    </ContainerForm>
     
 
   );
 }
 
 const Container = styled.div`
-    margin-top: 150px;
+    margin-top: 100px;
     width: 100%;
+    font-family: 'Roboto';
 
     & span{
+        background-color: #FFFFFF;
+        height: 100px;
         display: flex;
         justify-content: center;
+        align-items: center;
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 50px;

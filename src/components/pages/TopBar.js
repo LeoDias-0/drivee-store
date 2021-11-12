@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 
 export default function TopBar() {
   const [isOpen, setIsOpen] = useState('');
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const history = useHistory();
 
   function openCloseMenu() {
@@ -63,6 +63,7 @@ const Top = styled.div`
     box-sizing: border-box;
     padding: 20px;
     z-index:1;
+    font-family: 'Roboto';
 
     & h1{
         font-size: 32px;
