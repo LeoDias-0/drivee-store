@@ -13,7 +13,7 @@ export default function Home() {
         setItems(res.data);
       })
       .catch((err) => {
-        console.log('err');
+        console.log(err);
       });
   }, []);
 
