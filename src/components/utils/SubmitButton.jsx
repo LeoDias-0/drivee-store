@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Loader from 'react-loader-spinner'
 
 const SubmitButtonContainer = styled.button`
     box-sizing: border-box;
@@ -17,10 +18,14 @@ const SubmitButtonContainer = styled.button`
     font-weight: 400;
 `
 
-const SubmitButton = ({ innerText, onClick }) => {
+const SubmitButton = ({ innerText, onClick, onLoad }) => {
     return (
         <SubmitButtonContainer onClick={onClick}>
-        {innerText}
+        {
+            onLoad ?
+            <Loader type="ThreeDots" color="#00BFFF" height={18} width={18} /> :
+            innerText
+        }
         </SubmitButtonContainer>
     )
 }

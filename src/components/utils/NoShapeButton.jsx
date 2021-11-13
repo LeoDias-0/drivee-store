@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 const ContainerNoShapeButton = styled.button`
@@ -21,9 +22,11 @@ const ContainerNoShapeButton = styled.button`
     }
 `
 
-const NoShapeButton = ({ innerText }) => {
+const NoShapeButton = ({ innerText, goTo }) => {
+    const history = useHistory()
+
     return (
-        <ContainerNoShapeButton>
+        <ContainerNoShapeButton onClick={() => history.push(goTo)}>
             {innerText}
         </ContainerNoShapeButton>
     )
