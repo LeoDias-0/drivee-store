@@ -1,6 +1,8 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ResetCSS from './utils/ResetCSS'
 import SignUpScreen from './pages/SignUpScreen'
+import TopBar from './pages/TopBar'
+import Home from './pages/Home'
 
 const App = () => {
     return (
@@ -8,7 +10,8 @@ const App = () => {
         <ResetCSS />
             <Switch>
                 <Route from='/' exact>
-                    Work in Progress
+                    <TopBar />
+                    <Home />
                 </Route>
                 <Route from='/sign-up' exact>
                     <SignUpScreen />

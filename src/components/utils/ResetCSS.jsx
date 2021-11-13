@@ -49,4 +49,7 @@ export default createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    body{
+        background-color: #E7E7E7;
+    }
 `
