@@ -6,6 +6,9 @@ import NoShapeButton from '../utils/NoShapeButton'
 import MiniHeaderForForm from '../utils/MiniHeaderForForm'
 import { useState } from 'react'
 import { postSignUp } from '../../services/API'
+import { validateSignUpInfo} from '../../validations/validateSignUpInfo'
+import Swal from 'sweetalert2'
+
 
 const SignUpScreen = () => {
     const [name, setName] = useState('')
@@ -14,23 +17,31 @@ const SignUpScreen = () => {
     const [repeatedPassword, setRepeatedPassword] = useState('')
 
     const handleSubmitButton = async () => {
-        // TODO: 
-        // Algumas validações básicas
-
-        if (password !== repeatedPassword) alert("A senhas devem ser iguais!")
 
         const body = {
             name,
             email,
             password
         }
+
+        const showErrorMessage = text => {
+            Swal.fire({
+                title: 'Erro!',
+                text,
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        }
+
+        if (password !== repeatedPassword) showErrorMessage('A senhas devem ser iguais!')
+
+        const validationsErrorsDetails = validateSignUpInfo.validate(body).error?.details
+        if (validationsErrorsDetails) showErrorMessage('Dados inválidos!')
         
         try {
-            const response = await postSignUp(body)
-            console.log(response)
-            if (response.status === 200) alert('Usuário cadastrado com sucesso!')
+            await postSignUp(body)
         } catch (error) {
-            console.log('Houve um erro interno, tente novamente mais tarde!')
+            showErrorMessage('Houve um erro interno, tente novamente mais tarde!')
         }
     }
     
