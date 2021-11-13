@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { postSignUp } from '../../services/API'
 import { validateSignUpInfo} from '../../validations/validateSignUpInfo'
 import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom'
 
 
 const SignUpScreen = () => {
@@ -15,6 +16,9 @@ const SignUpScreen = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatedPassword, setRepeatedPassword] = useState('')
+    const history = useHistory()
+
+    const [onLoad, setOnLoad] = useState(false)
 
     const handleSubmitButton = async () => {
 
@@ -33,15 +37,24 @@ const SignUpScreen = () => {
             })
         }
 
-        if (password !== repeatedPassword) showErrorMessage('A senhas devem ser iguais!')
+        if (password !== repeatedPassword) return showErrorMessage('A senhas devem ser iguais!')
 
         const validationsErrorsDetails = validateSignUpInfo.validate(body).error?.details
-        if (validationsErrorsDetails) showErrorMessage('Dados inválidos!')
+        if (validationsErrorsDetails) return showErrorMessage('Dados inválidos!')
         
+        setOnLoad(true)
+
         try {
             await postSignUp(body)
+
+            history.push('/')
         } catch (error) {
-            showErrorMessage('Houve um erro interno, tente novamente mais tarde!')
+            if (error.response.status === 400) {
+                showErrorMessage('E-mail já cadastrado!')
+            } else {
+                showErrorMessage('Houve um erro interno, tente novamente mais tarde!')
+            }
+            setOnLoad(false)
         }
     }
     
@@ -68,8 +81,12 @@ const SignUpScreen = () => {
                     type={'password'}
                     placeholder={'Repita sua senha'}
                     valueToTrack={[repeatedPassword, setRepeatedPassword]} />
-                <SubmitButton innerText={'Cadastrar'} onClick={handleSubmitButton} />
-                <NoShapeButton innerText={'Já possui um conta?'} />
+                <SubmitButton
+                    innerText={'Cadastrar'}
+                    onClick={handleSubmitButton}
+                    onLoad={onLoad}
+                    />
+                <NoShapeButton innerText={'Já possui um conta?'} goTo={'/sign-in'}/>
             </ContainerForm>
         </Background>
     )
