@@ -55,6 +55,7 @@ const Container = styled.div`
     & img{
         width: 80%;
         margin-left: 10%;
+        max-height:50px;
     }
 
     & div{
