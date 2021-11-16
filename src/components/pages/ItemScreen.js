@@ -21,9 +21,7 @@ export default function ItemScreen(){
                 <span>
                     {item.name}
                 </span>
-                <div className="img">
                  <img src={item.img} alt="" />
-                </div> 
                 <div>
                     <p>
                         {item.description}
@@ -54,14 +52,10 @@ const Container = styled.div`
         cursor:default;
     }
 
-     & .img{
-        width: 120px;
-        max-height: 120px;
-        margin-left: 10%;
+     
         & img{
-            object-fit: cover;
+            height: 100px;
         }
-    }
 
     & div{
         display: flex;
