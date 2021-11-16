@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 
 export default function TopBar() {
   const [isOpen, setIsOpen] = useState('');
-  const [login, setLogin] = useState(false);
+  const login = localStorage.getItem("drivee_store:token")
   const history = useHistory();
 
   function openCloseMenu() {
@@ -26,7 +26,7 @@ export default function TopBar() {
             ? (
               <>
                 <div>
-                  <p>Jean F</p>
+                  <p></p>
                   <span>Sair</span>
                 </div>
                 <BsCart2 onClick={openCloseMenu} style={{ fontSize: 50, cursor: 'pointer' }} />
