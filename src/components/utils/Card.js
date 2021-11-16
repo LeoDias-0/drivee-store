@@ -13,8 +13,7 @@ export default function Card({ item }) {
           <h1 onClick={() => history.push(`/item/${item.id}`)}>{item.name}</h1>
           <span>{item.description}</span>
           <p>
-            R$
-            {item.price}
+            R${item.price},00
           </p>
         </div>
         <button>
