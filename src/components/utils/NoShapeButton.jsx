@@ -7,7 +7,7 @@ const ContainerNoShapeButton = styled.button`
     margin: 20px;
     box-sizing: border-box;
     border-radius: .375em;
-    width: 100%;
+    width: ${({width}) => width};
     font-size: 16px;
     min-height: 48px;
     border-color: transparent;
@@ -22,11 +22,11 @@ const ContainerNoShapeButton = styled.button`
     }
 `
 
-const NoShapeButton = ({ innerText, goTo }) => {
+const NoShapeButton = ({ innerText, goTo, width='100%' }) => {
     const history = useHistory()
 
     return (
-        <ContainerNoShapeButton onClick={() => history.push(goTo)}>
+        <ContainerNoShapeButton onClick={() => history.push(goTo)} width={width} >
             {innerText}
         </ContainerNoShapeButton>
     )

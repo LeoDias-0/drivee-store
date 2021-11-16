@@ -4,8 +4,11 @@ import SignUpScreen from './pages/SignUpScreen'
 import TopBar from './pages/TopBar'
 import Home from './pages/Home'
 import SignInScreen from './pages/SignInScreen'
+import CheckoutScreen from './pages/CheckoutScreen'
 
 const App = () => {
+    const cartList = [{name: 'product', qty: 2, price: 1299}]
+
     return (
         <BrowserRouter>
         <ResetCSS />
@@ -19,6 +22,9 @@ const App = () => {
                 </Route>
                 <Route from='/sign-in' exact>
                     <SignInScreen />
+                </Route>
+                <Route from='/checkout' exact>
+                    <CheckoutScreen cartList={cartList}/>
                 </Route>
             </Switch>
         </BrowserRouter>
