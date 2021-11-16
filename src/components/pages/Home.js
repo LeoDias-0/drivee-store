@@ -4,31 +4,30 @@ import Card from '../utils/Card';
 import { getItems } from '../../services/API';
 
 export default function Home() {
-  const [items, setItems] = useState([]);
+	const [items, setItems] = useState([]);
 
-  useEffect(() => {
-      getItems()
-      .then((res) => {
-        console.log(res)
-        setItems(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+	useEffect(() => {
+		getItems()
+			.then((res) => {
+				setItems(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
-  return (
-      <Container>
-        <span>
-          Todos os produtos
-        </span>
-        <Cards>
-          {items.map((item) => <Card item={item} key={item.id} />)}
-        </Cards>
-      </Container>
-    
+	return (
+		<Container>
+			<span>
+				Todos os produtos
+			</span>
+			<Cards>
+				{items.map((item) => <Card item={item} key={item.id} />)}
+			</Cards>
+		</Container>
 
-  );
+
+	);
 }
 
 const Container = styled.div`
