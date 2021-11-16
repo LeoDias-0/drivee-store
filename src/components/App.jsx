@@ -5,6 +5,7 @@ import TopBar from './pages/TopBar'
 import Home from './pages/Home'
 import SignInScreen from './pages/SignInScreen'
 import CheckoutScreen from './pages/CheckoutScreen'
+import ItemScreen from './pages/ItemScreen'
 
 const App = () => {
     const cartList = [{name: 'product', qty: 2, price: 1299}]
@@ -14,8 +15,12 @@ const App = () => {
         <ResetCSS />
             <Switch>
                 <Route from='/' exact>
-                    <TopBar />
+                    <TopBar/>
                     <Home />
+                </Route>
+                <Route from='/item/:id' exact>
+                    <TopBar/>
+                    <ItemScreen/>
                 </Route>
                 <Route from='/sign-up' exact>
                     <SignUpScreen />

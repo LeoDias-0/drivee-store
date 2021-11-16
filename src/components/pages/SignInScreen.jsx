@@ -40,7 +40,7 @@ const SignInScreen = () => {
         try {
             const response = await postSignIn(body)
 
-            const token = response.data.token
+            const token = response.data.token;
 
             localStorage.setItem('drivee_store:token', token)
 
