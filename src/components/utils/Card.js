@@ -5,7 +5,7 @@ export default function Card({ item }) {
   const history = useHistory();
   return (
     <StyledCard>
-      <div className="img" onClick={() => history.push('/item')}>
+      <div className="img" onClick={() => history.push(`/item/${item.id}`)}>
         <img src={item.img} alt="" />
       </div>
       <div className="infos">
